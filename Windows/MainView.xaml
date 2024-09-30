@@ -1,0 +1,636 @@
+﻿<Window x:Class="ConscriptFinder.Windows.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ConscriptFinder"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+	    Foreground="{DynamicResource WindowBrushText}"
+        ResizeMode="CanMinimize"
+        Title="{x:Static local:TitleConstants.AppTitle}" Height="585" Width="1000">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width=".5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".3*"/>
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Column="1" 
+                      Width="2" 
+                      ShowsPreview="False" 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      Grid.RowSpan="2">
+        </GridSplitter>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".25*"/>
+                <ColumnDefinition Width=".25*"/>
+                <ColumnDefinition Width=".25*"/>
+                <ColumnDefinition Width=".25*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       Height="30"
+                       FontSize="17"
+                       FontWeight="DemiBold"
+                       Grid.ColumnSpan="4"
+                       Margin="10 10 10 0"
+                       Padding="0 3 5 5"
+                       Foreground="#000"
+                       HorizontalAlignment="Center"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptTitle}" />
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Margin="10"
+                       FontSize="15"
+                       Foreground="#000"
+                       Text="{x:Static local:TitleConstants.MainWindowCommonConscriptPersonalData}"/>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="0"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptLastName, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptLastName}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown">
+            </TextBox>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptFirstName, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptFirstName}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="2"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptMiddleName, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptMiddleName}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <DatePicker Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="10 0"
+                        Padding="0 10 0 0"
+                        Foreground="#000"
+                        SelectedDate="{Binding ConscriptBirthDate}"
+                        ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptBirthDate}"
+                        ui:HintAssist.IsFloating="True"
+                        KeyDown="DatePickerKeyDown"/>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="15"
+                       Grid.ColumnSpan="4"
+                       Margin="10 10 10 5"
+                       Padding="0 5 0 0"
+                       Foreground="#000"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptPassportData}"/>
+
+            <TextBox Grid.Row="4"
+                     Grid.Column="0"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptPassportSeries, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptPassportSeries}" 
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <TextBox  Grid.Row="4"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="2"
+                      Margin="10 0"
+                      Foreground="#000"
+                      Text="{Binding ConscriptPassportNumber, ValidatesOnDataErrors=True}"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptPassportNumber}"
+                      ui:HintAssist.IsFloating="True"
+                      KeyDown="TextBoxKeyDown"/>
+
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Margin="10 10 10 5"
+                       Padding="0 5 0 0"
+                       FontSize="15"
+                       Foreground="#000"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptMilitaryTicketData}"/>
+
+            <TextBox Grid.Row="6"
+                     Grid.Column="0"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptMilitaryTicketSeries, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptMilitaryTicketSeries}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <TextBox Grid.Row="6"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="2"
+                     Margin="10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptMilitaryTicketNumber, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptMilitaryTickerNumber}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <TextBlock Grid.Row="7"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       FontSize="15"
+                       Margin="10 10 10 5"
+                       Padding="0 5 0 0"
+                       Foreground="#000"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptCommonData}" />
+
+            <ComboBox Grid.Row="8"
+                      Grid.Column="0"
+                      Margin="10 0 10 1.5"
+                      MaxDropDownHeight="150"
+                      Foreground="#000"
+                      Text="{Binding ConscriptRVK}"
+                      ItemsSource="{Binding RVKList}"
+                      x:Name="ComboboxRVK"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptRVK}"
+                      ui:HintAssist.IsFloating="True" VerticalAlignment="Bottom"
+                      Style="{DynamicResource MaterialDesignComboBox}"
+                      KeyDown="ComboBoxKeyDown">
+
+                <ComboBox.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</sys:Double>
+                    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <ComboBox Grid.Row="8"
+                      Grid.Column="1"
+                      Margin="10,0,10,1"
+                      MaxDropDownHeight="150"
+                      x:Name="ComboboxConscription"
+                      Foreground="#000"
+                      SelectedItem="{Binding Conscript}"
+                      ItemsSource="{Binding ConscriptList}"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscript}"
+                      ui:HintAssist.IsFloating="True" VerticalAlignment="Bottom"
+                      KeyDown="ComboBoxKeyDown">
+
+                <ComboBox.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</sys:Double>
+                    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
+                </ComboBox.Resources>
+
+            </ComboBox>
+
+            <Separator Grid.Row="9"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Margin="10 0 10 0"/>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+              Margin="0 -15">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="124.75" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Height="30"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptCommandTitle}"
+                       Foreground="#000"
+                       FontWeight="DemiBold"
+                       FontSize="17"
+                       Margin="10 7 10 0"
+                       HorizontalAlignment="Center"
+                       Padding="0 3 0 0">
+            </TextBlock>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"
+                       Margin="10 8 0 10"
+                       Text="{x:Static local:TitleConstants.MainWindowConscriptCommandCommonInfo}"
+                       FontSize="15"
+                       Foreground="#000"/>
+
+            <ComboBox Grid.Row="2"
+                      Grid.Column="0"
+                      Margin="10 -5 10 0"
+                      MaxDropDownHeight="150"
+                      Foreground="#000"
+                      ItemsSource="{Binding StationsList}"
+                      SelectedItem="{Binding ConscriptCommandStation}"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptCommandStation}"
+                      ui:HintAssist.IsFloating="True"
+                      KeyDown="ComboBoxKeyDown">
+                <ComboBox.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</sys:Double>
+                    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <ComboBox Grid.Row="2"
+                      Grid.Column="1"
+                      Margin="10 -5 10 0"
+                      MaxDropDownHeight="150"
+                      Foreground="#000"
+                      ItemsSource="{Binding MilKinds}"
+                      SelectedItem="{Binding ConscriptCommandMilKind}"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptCommandMilKind}"
+                      ui:HintAssist.IsFloating="True"
+                      KeyDown="ComboBoxKeyDown">
+
+                <ComboBox.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</sys:Double>
+                    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
+                </ComboBox.Resources>
+
+            </ComboBox>
+
+            <TextBox Grid.Row="2"
+                     Grid.Column="2"
+                     Margin="10 -5 10 0"
+                     Foreground="#000"
+                     Text="{Binding ConscriptCommandArmyUnitNumber, ValidatesOnDataErrors=True}"
+                     ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscriptCommandArmyUnit}"
+                     ui:HintAssist.IsFloating="True"
+                     KeyDown="TextBoxKeyDown"/>
+
+            <ComboBox Grid.Row="1"
+                      Grid.Column="3"
+                      Margin="10,0,10,67"
+                      MaxDropDownHeight="150"
+                      Foreground="#000"
+                      SelectedItem="{Binding ConscriptCommandConscription}"
+                      ItemsSource="{Binding ConscriptList}"
+                      ui:HintAssist.Hint="{x:Static local:TitleConstants.MainWindowConscript}"
+                      ui:HintAssist.IsFloating="True"
+                      KeyDown="ComboBoxKeyDown" Grid.RowSpan="3" VerticalAlignment="Bottom">
+                <ComboBox.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">10</sys:Double>
+                    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10 35 10 0"
+                    Padding="0 0 0 3"
+                    Foreground="#FFF"
+                    Background="#CB4154"
+                    IsDefault="True"
+                    IsEnabled="{Binding SearchButtonEnable}"
+                    Command="{Binding SearchCommand}"
+                    Content="{x:Static local:TitleConstants.MainWindowSearchButton}"
+                    BorderThickness="0"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}">
+            </Button>
+
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Margin="10 35 10 0"
+                    Padding="0 0 0 3"
+                    Foreground="#FFF"
+                    Background="#CB4154"
+                    BorderThickness="0"
+                    x:Name="ClearButton"
+                    Command="{Binding ClearFieldsCommand}"
+                    Content="{x:Static local:TitleConstants.MainWindowClearButton}"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}">
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="0"
+              Grid.Column="1"
+              Grid.RowSpan="2"
+              Grid.ColumnSpan="2">
+
+            <ProgressBar Width="100"
+                         Height="100"
+                         Foreground="#CB4154"
+                         IsIndeterminate="True"
+                         x:Name="ProgressBarSearchingDB"
+                         Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                         Visibility="{Binding ProgressBarVisibility}"
+                         Panel.ZIndex="2"/>
+
+            <TextBlock Text="{x:Static local:TitleConstants.MainWindowNotFound}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#000"
+                       FontWeight="Bold"
+                       Visibility="{Binding NotFoundLabelVisibility}"/>
+            <TextBlock Text="{x:Static local:TitleConstants.MainWindowProgressBarLoading}"
+                       FontSize="12"
+                       Foreground="#000"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="{Binding ProgressBarLabelVisibility}"/>
+            <ui:Card Height="110"
+                     Width="110"
+                     Visibility="{Binding FormingDocumentLabelVisibility}"
+                     Panel.ZIndex="1">
+                <TextBlock Text="{x:Static local:TitleConstants.MainWindowFormingDocument}"
+                           FontSize="12"
+                           Foreground="#000"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </ui:Card>
+
+
+            <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center"
+                            Width="130"
+                            Height="50"
+                            Margin="0 0 0 30"
+                            Panel.ZIndex="1"
+                            Visibility="{Binding ConscriptPrintButtonVisibility}">
+                <Button Margin="5 0 0 0"
+                            Background="#CB4154"
+                            BorderThickness="0"
+                            Height="35"
+                            Width="35"
+                            Foreground="#FFF"
+                            Content="{ui:PackIcon Kind=UserAdd,Size=20}"
+                            Style="{DynamicResource MaterialDesignIconButton}"
+                            Command="{Binding AddConscriptToPrintList}"
+                            CommandParameter="{Binding ElementName=ConscriptList, Path=SelectedItems}">
+                    <Button.ToolTip>
+                        <ToolTip Placement="Top">
+                            Добавить выделенное в список на печать
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Background="#CB4154"
+                        BorderThickness="0"
+                        Margin="5 0 0 0"
+                        Height="35"
+                        Width="35"
+                        Foreground="#FFF"
+                        Content="{ui:PackIcon Kind=Printer,Size=20}"
+                        Style="{DynamicResource MaterialDesignIconButton}"
+                        Command="{Binding PrintConscriptsCommand}">
+                    <Button.ToolTip>
+                        <ToolTip Placement="Top">
+                            Сформировать список печати
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+
+                <Button Margin="5 0 0 0"
+                        Background="#CB4154"
+                        BorderThickness="0"
+                        Height="35"
+                        Width="35"
+                        Foreground="#FFF"
+                        Content="{ui:PackIcon Kind=Delete,Size=20}"
+                        Style="{DynamicResource MaterialDesignIconButton}"
+                        Command="{Binding ClearPrintList}">
+                    <Button.ToolTip>
+                        <ToolTip Placement="Top">
+                            Очистить список печати
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+
+            <ListView Grid.Row="0"
+                      Grid.RowSpan="2"
+                      Grid.Column="2"
+                      Margin="10 0"
+                      Background="#FFFFF2"
+                      FontSize="13"
+                      SelectionMode="Extended"
+                      x:Name="ConscriptList"
+                      HorizontalContentAlignment="Center"
+                      Visibility="{Binding ConscriptsListVisibility}"
+                      ItemsSource="{Binding ConscriptsList}"
+                      d:ItemsSource="{d:SampleData ItemCount=5}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding ShowConscriptCommand}" 
+                           CommandParameter="{Binding ElementName=ConscriptList, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="{ui:PackIcon Kind=VectorSelection,Size=15}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <CheckBox Margin="20 0 0 0" 
+                                                  IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}, Mode=FindAncestor}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Фамилия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding LastName}" Margin="17 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header ="Имя">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding FirstName}" Margin="8 0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Отчество">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding MiddleName}" Margin="12 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата рождения">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding BirthDate}" Margin="30 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Военкомат">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding RVK}" Margin="15 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Призыв">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Conscription}" Margin="10 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+            <ListView Grid.Row="0"
+                      Grid.RowSpan="1"
+                      Grid.Column="2"
+                      Margin="10 0"
+                      FontSize="13"
+                      x:Name="ConscriptCommandsList"
+                      HorizontalContentAlignment="Center"
+                      Visibility="{Binding ConscriptCommandsListVisibility}"
+                      ItemsSource="{Binding ConscriptCommandsList}"
+                      d:ItemsSource="{d:SampleData ItemCount=5}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding ShowConscriptCommandCommand}" 
+                            CommandParameter="{Binding ElementName=ConscriptCommandsList, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Станция">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Station}" Margin="20 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header ="Вид войск">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding MilKind}" Margin="35 0 0 0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Воинская часть">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding ArmyUnitNumber}" Margin="35 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата отправки">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding DepartureDate}" Margin="25 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Призыв" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Conscription}" Margin="8 0 0 0" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <ui:Card Width="200"
+                 Height="40"
+                 Padding="3 0 5 0"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 Grid.ColumnSpan="3"
+                 Visibility="{Binding SearchResultVisibility}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height=".5*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Text="{x:Static local:TitleConstants.MainWindowRecordsFound}" />
+                <TextBlock Grid.Row="1" 
+                           FontSize="14"
+                           TextAlignment="Center"
+                           Text="{Binding SearchCount}"/>
+            </Grid>
+        </ui:Card>
+    </Grid>
+
+</Window>

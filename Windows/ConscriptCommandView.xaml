@@ -1,0 +1,293 @@
+﻿<Window x:Class="ConscriptFinder.Windows.ConscriptCommandView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:ConscriptFinder"
+        Background="{DynamicResource MaterialDesignPaper}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Карточка команды" Height="680" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0">
+            <ui:Card Margin="10 10"
+                     Height="550"
+                     VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="Общая информация"
+                           Margin="5"
+                           Foreground="#000"
+                           FontSize="13"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandOSPNumber}"
+                               ui:HintAssist.Hint="Номер команды ОСП"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandOkrug}"
+                               ui:HintAssist.Hint="Военный округ"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandStation}"
+                               ui:HintAssist.Hint="Станция"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             Text="{Binding ConscriptCommandMilKind}"
+                             ui:HintAssist.Hint="Вид войск"
+                             ui:HintAssist.IsFloating="True"
+                             IsReadOnly ="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             Text="{Binding ConscriptCommandArmyUnitNumber}"
+                             ui:HintAssist.Hint="Номер в/ч"
+                             ui:HintAssist.IsFloating="True"
+                             IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandEcheloneNumber}"
+                               ui:HintAssist.Hint="Номер эшелона"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandDepartureDate}"
+                               ui:HintAssist.Hint="Убытие"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandRezh}"
+                               ui:HintAssist.Hint="Режимность команды"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandConscription}"
+                               ui:HintAssist.Hint="Призыв"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandRyad}"
+                               ui:HintAssist.Hint="Приказ о выдаче звания рядового"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               Text="{Binding ConscriptCommandVesh}"
+                               ui:HintAssist.Hint="Вещевой аттестат"
+                               ui:HintAssist.IsFloating="True"
+                               IsReadOnly ="True"/>
+                </StackPanel>
+            </ui:Card>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="2">
+            <ui:Card Margin="10"
+                     Height="220"
+                     VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="Информация о воинской части"
+                               Margin="5"
+                               Foreground="#000"
+                               FontSize="13"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               IsReadOnly ="True"
+                               Text="{Binding ConscriptCommandZIP}"
+                               ui:HintAssist.Hint="Почтовый индекс"
+                               ui:HintAssist.IsFloating="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               IsReadOnly ="True"
+                               Text="{Binding ConscriptCommandCity}"
+                               ui:HintAssist.Hint="Город"
+                               ui:HintAssist.IsFloating="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               IsReadOnly ="True"
+                               Text="{Binding ConscriptCommandStreet}"
+                               ui:HintAssist.Hint="Улица"
+                               ui:HintAssist.IsFloating="True"/>
+                    <TextBox   Margin="5 5 10 5"
+                               Foreground="#000"
+                               IsReadOnly ="True"
+                               Text="{Binding ConscriptCommandPhoneNumber}"
+                               ui:HintAssist.Hint="Телефон"
+                               ui:HintAssist.IsFloating="True"/>
+                </StackPanel>
+            </ui:Card>
+
+            <ui:Card Height="Auto" 
+                     Margin="10 5 10 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.Row="0"
+                                 Width="100"
+                                 Height="100"
+                                 Margin="30"
+                                 Visibility="{Binding SearchingStatusVisibility}"
+                                 Foreground="#CB4154"
+                                 IsIndeterminate="True"
+                                 x:Name="ProgressBarSearchingDB"
+                                 Style="{DynamicResource MaterialDesignCircularProgressBar}"/>
+                    <TextBlock Text="{x:Static local:TitleConstants.ConscriptCommandWindowDownloading}"
+                               FontSize="12"
+                               Visibility="{Binding SearchingStatusVisibility}"
+                               Foreground="#000"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Состав команды"
+                               Margin="5"
+                               Foreground="#000"
+                               FontSize="13"/>
+                    <Button Width="250"
+                            Height="28"
+                            FontSize="12"
+                            Margin="5 58 5 0"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFF"
+                            Background="#CB4154"
+                            BorderThickness="0"
+                            Command="{Binding LoadConscriptsList}"
+                            Style="{DynamicResource MaterialDesignFlatSecondaryLightBgButton}"
+                            Visibility="{Binding SearchButtonVisibility}"
+                            Content="Показать"
+                            Panel.ZIndex="1"/>
+                    <ListView Margin="5 0 5 10"
+                              MaxHeight="230"
+                              FontSize="12"
+                              x:Name="ConscriptsList"
+                              ItemsSource="{Binding ConscriptList}"
+                              Visibility="{Binding ConscriptListVisibility}"
+                              d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Margin="-10 0 0 0">
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                            <Binding Path="LastName"/>
+                                                            <Binding Path="FirstName"/>
+                                                            <Binding Path="MiddleName"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Grid.Row="1"
+                            VerticalAlignment="Bottom"
+                            Width="250"
+                            Height="28"
+                            FontSize="12"
+                            Margin="5 8 5 12"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFF"
+                            Background="#CB4154"
+                            BorderThickness="0"
+                            Visibility="{Binding ExportVisibility}"
+                            Style="{DynamicResource MaterialDesignFlatSecondaryLightBgButton}"
+                            Command="{Binding ExportCommand}"
+                            Content="Экспорт в таблицу"/>
+                </Grid>
+            </ui:Card>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1">
+            <ui:Card Margin="10"
+                     Height="360">
+                <StackPanel>
+                    <TextBlock Text="Информация о старших команды"
+                           Margin="5"
+                           Foreground="#000"
+                           FontSize="13"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             Text="{Binding ConscriptCommandPredsRank}"
+                             ui:HintAssist.Hint="Звание"
+                             IsReadOnly ="True"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPreds}"
+                             ui:HintAssist.Hint="ФИО"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPredsDocSeries}"
+                             ui:HintAssist.Hint="Серия удостоврения"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPredsDocNumber}"
+                             ui:HintAssist.Hint="Номер удостоврения"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPredsDocGiven}"
+                             ui:HintAssist.Hint="Удостоврение выдано"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPredsDocDate}"
+                             ui:HintAssist.Hint="Дата выдачи удостоверения"
+                             ui:HintAssist.IsFloating="True"/>
+                    <TextBox Margin="5 5 10 5"
+                             Foreground="#000"
+                             IsReadOnly ="True"
+                             Text="{Binding ConscriptCommandPredsSpec}"
+                             ui:HintAssist.Hint="Специальность"
+                             ui:HintAssist.IsFloating="True"/>
+                </StackPanel>
+            </ui:Card>
+        </StackPanel>
+
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="10 0"
+                Style="{DynamicResource MaterialDesignFlatButton}"
+                Content="{ui:PackIcon Kind=Done,Size=20}"
+                Command="{Binding CloseViewCommand}">
+        </Button>
+    </Grid>
+</Window>
