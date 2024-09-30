@@ -4,5 +4,5 @@ Application for browsing conscripts in database implemented in C# with MVVM patt
 Here is GUI of the Main window:
 
 <p>
-  <img src = "https://github.com/trxerick/Conscript_Finder/blob/main/GUI_Demo/GUI_1.jpg" Width=300 Height=250/>
+  <img src = "https://github.com/trxerick/Conscript_Finder/blob/main/GUI_Demo/GUI_1.jpg" Width=600 Height=550/>
 </p>
